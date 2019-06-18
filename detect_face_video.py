@@ -3,24 +3,12 @@ from random import randint
 import time
 
 # Load the cascade
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalcatface.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
 
 # To capture video from webcam. 
 # cap = cv2.VideoCapture(0)
 # To use a video file as input 
 cap = cv2.VideoCapture('cropvideo.mp4')
-
-fps = cap.get(cv2.CAP_PROP_FPS)
-
-print(fps)
-
-cv2.CAP_PROP_FPS = 10
-
-ram  = cap.get(cv2.CAP_PROP_FPS)
-
-print(ram)
-
-
 
 
 # cap.get(cv2.CAP_PROP_FPS)
