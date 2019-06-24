@@ -5,7 +5,7 @@ from random import randint
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Read the input image
-img = cv2.imread('test.jpg')
+img = cv2.imread('check_it.png')
 
 draw = img.copy()
 
@@ -25,7 +25,7 @@ for box in faces:
 for (x, y, w, h) in faces:
   crop_img = draw[y:y+w, x:x+h]
   cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-  cv2.imwrite(str(randint(0,50))+".jpg",crop_img)
+  cv2.imwrite('ramlal/' + str(randint(0,50))+".jpg",crop_img)
 
 # Display the output
 cv2.imshow('img', img)
