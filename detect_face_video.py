@@ -14,8 +14,8 @@ import requests
 import face_recognition
 from PIL import Image
 
-
-
+a = 0
+resolution_error = 0
 matchurl = "https://api.facesoft.io/v1/face/match"
 
 headers = {
@@ -37,7 +37,7 @@ pather = '/home/velar/Desktop/test_face/facedetection-master/checked_images'
 
 face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
 
-cap = cv2.VideoCapture('final_dance2.mp4')
+cap = cv2.VideoCapture('cropvideo.mp4')
 
 
 # fps = cap.get(cv2.CAP_PROP_FPS)
@@ -121,11 +121,15 @@ while True:
                         falser.append(match[0])
 
                     except Exception:
+                        # global resolution_error
+                        # resolution_error = resolution_error + 1
                         print("The resolution is too low to figure out!!")
-                        print("Sleeping for 5 seconds")
-                        time.sleep(5)
+                        resolution_error = 1
+
 
         print(falser)
+
+        a = a + 1
 
         match_count = 0
 
@@ -139,8 +143,14 @@ while True:
             print("Please add the image into registration. This is the new face")
             
             try:
+                
                 img = cv2.imread(crop_img)      
-                cv2.imwrite(os.path.join(pather , str(randint(1, 1000000)) + ".jpg"), img)
+                cv2.imwrite(os.path.join(pather , str(a) + ".jpg"), img)
+                if(resolution_error == 1):
+                    os.remove("checked_images/" + str(a) + ".jpg")
+
+                resolution_error = 0
+
 
             except Exception:
                 print("This is the first image, of registration. So this exception has arise!!")
@@ -159,7 +169,7 @@ while True:
         falser = []
         match_count = 0
 
-
+        print(resolution_error)
 
             #         pather = '/home/velar/Desktop/test_face/facedetection-master/test'
 
