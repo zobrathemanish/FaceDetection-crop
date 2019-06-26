@@ -60,7 +60,7 @@ while True:
     # Read the frame
     _, img = cap.read()
     # img = rescale_frame(img, percent = 40)
-    draw = img.copy ()
+    draw = img.copy()
 
     # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
