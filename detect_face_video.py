@@ -24,9 +24,9 @@ headers = {
 
 ENCODING = 'utf-8'
 
-path = '/home/velar/Desktop/test_face/facedetection-master/checked_images'
+path = '/home/velar/Desktop/test_face/facedetection-master/check_me'
 
-pather = '/home/velar/Desktop/test_face/facedetection-master/checked_images'
+pather = '/home/velar/Desktop/test_face/facedetection-master/check_me'
 
 # Load the cascade
 # face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
@@ -37,7 +37,7 @@ pather = '/home/velar/Desktop/test_face/facedetection-master/checked_images'
 
 face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
 
-cap = cv2.VideoCapture('cropvideo.mp4')
+cap = cv2.VideoCapture('nice_video.mp4')
 
 
 # fps = cap.get(cv2.CAP_PROP_FPS)
@@ -84,10 +84,10 @@ while True:
         # cv2.imshow('first_crop', first_crop)
         # first_image = cv2.imwrite("ramlal.jpg", crop_img)
         
-        checkedFolder = 'checked_images/*'
+        checkedFolder = 'check_me/*'
 
-        if not os.listdir('checked_images'):
-            cv2.imwrite('checked_images/' + "first_image.jpg",crop_img)
+        if not os.listdir('check_me'):
+            cv2.imwrite('check_me/' + "first_image.jpg",crop_img)
 
 
             # print("written the first image to checked images")
@@ -105,7 +105,7 @@ while True:
                 lmm_face_encoding = face_recognition.face_encodings(lmm_image, known_face_locations=[face_location])[0]
 
 
-                for filepath in glob.iglob('checked_images/*'):
+                for filepath in glob.iglob('check_me/*'):
 
                     # print(filepath)
 
@@ -147,7 +147,7 @@ while True:
                 img = cv2.imread(crop_img)      
                 cv2.imwrite(os.path.join(pather , str(a) + ".jpg"), img)
                 if(resolution_error == 1):
-                    os.remove("checked_images/" + str(a) + ".jpg")
+                    os.remove("check_me/" + str(a) + ".jpg")
 
                 resolution_error = 0
 
@@ -191,4 +191,7 @@ while True:
                             
                     # break
 
-
+    cv2.imshow('face_recog_crop', img)
+    # Hit 'q' on the keyboard to quit!
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
