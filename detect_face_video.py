@@ -37,7 +37,7 @@ pather = '/home/velar/Desktop/test_face/facedetection-master/check_me'
 
 face_cascade = cv2.CascadeClassifier('haarcascade_profileface.xml')
 
-cap = cv2.VideoCapture('nice_video.mp4')
+cap = cv2.VideoCapture('videorr.avi')
 
 
 # fps = cap.get(cv2.CAP_PROP_FPS)
